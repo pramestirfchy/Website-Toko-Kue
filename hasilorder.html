@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="hasilorder.css">
+    <link rel="icon" href="c:\Users\Lenovo\Downloads\Glyda__6_-removebg-preview.png">
+</head>
+<body> 
+    <section class="Order">
+        <div class="container">
+            <h2 class="text-center mb-4">Order Summary</h2>
+            <div id="orderDetails">
+                <div class="mb-3">
+                    <h5>Customer Information</h5>
+                    <p id="customerName"><strong>Name:</strong> <span id="firstName"></span> <span id="lastName"></span></p>
+                    <p id="customerEmail"><strong>Email:</strong> <span id="email"></span></p>
+                    <p id="customerPhone"><strong>Phone:</strong> <span id="phone"></span></p>
+                    <p id="customerAddress"><strong>Address:</strong> <span id="address"></span></p>
+                    <p id="customerCity"><strong>City:</strong> <span id="city"></span></p>
+                    <p id="customerId"><strong>ID:</strong> <span id="id"></span></p>
+                </div>
+                <div class="mb-3">
+                    <h5>Order Details</h5>
+                    <div id="cupcakeDetails"></div>
+                    <p id="totalPrice"><strong>Total Price:</strong> Rp <span id="totalAmount"></span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var firstName = localStorage.getItem('firstName');
+            var lastName = localStorage.getItem('lastName');
+            var email = localStorage.getItem('email');
+            var phone = localStorage.getItem('phone');
+            var address = localStorage.getItem('address');
+            var city = localStorage.getItem('city');
+            var id = localStorage.getItem('id');
+
+            document.getElementById('firstName').textContent = firstName;
+            document.getElementById('lastName').textContent = lastName;
+            document.getElementById('email').textContent = email;
+            document.getElementById('phone').textContent = phone;
+            document.getElementById('address').textContent = address;
+            document.getElementById('city').textContent = city;
+            document.getElementById('id').textContent = id;
+
+            var cupcakeDetails = localStorage.getItem('cupcakeDetails');
+            var totalPrice = localStorage.getItem('totalPrice');
+
+            if (cupcakeDetails) {
+                var cupcakeDetailsElement = document.getElementById('cupcakeDetails');
+                cupcakeDetailsElement.innerHTML = cupcakeDetails;
+            }
+
+            if (totalPrice) {
+                document.getElementById('totalAmount').textContent = totalPrice;
+            }
+
+            localStorage.clear();
+        });
+    </script>
+</body>
+</html>

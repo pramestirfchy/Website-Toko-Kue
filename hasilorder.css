@@ -1,0 +1,52 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    padding-top: 20px;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.Order {
+    margin-bottom: 50px;
+}
+
+h2 {
+    color: #000;
+}
+
+h5 {
+    color: #211f03;
+}
+
+#orderDetails {
+    margin-top: 20px;
+}
+
+#customerName, #customerEmail, #customerPhone, #customerAddress, #customerCity, #customerId {
+    margin-bottom: 10px;
+}
+
+#cupcakeDetails {
+    margin-top: 10px;
+}
+
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    #totalPrice {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Order</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="icon" href="c:\Users\Lenovo\Downloads\Glyda__6_-removebg-preview.png">
+
+</head>
+<body> 
+    <section class="Order">
+        <div class="container">
+            <h2 class="text-center mb-4">Order Cupcakes</h2>
+            <form id="orderForm" class="needs-validation" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">First name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter your first name" required>
+                        <div class="invalid-feedback">
+                            Please enter your first name.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Last name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter your last name" required>
+                        <div class="invalid-feedback">
+                            Please enter your last name.
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="glyda.db@gmail.com" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address.
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+                        <div class="invalid-feedback">
+                            Please enter your phone number.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Jl. Tanjung Duren Raya No.74, Tj. Duren Utara, Kec. Grogol petamburan" required>
+                    <div class="invalid-feedback">
+                        Please enter your address.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" id="id" required>
+                        <div class="invalid-feedback">
+                            ID code required.
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="cupcakeType">Choose Cupcake Type</label>
+                    <select class="form-control" id="cupcakeType" required>
+                        <option value="">Select a cupcake type</option>
+                        <option value="Lemon Lavender Dream" data-price="65000">Lemon Lavender Dream - Rp 65.000</option> 
+                        <option value="Caramel Macchiato Bliss" data-price="75000">Caramel Macchiato Bliss - Rp 75.000</option>
+                        <option value="Rose Pistachio Delights" data-price="60000">Rose Pistachio Delights - Rp 60.000</option>
+                        <option value="Maple Bacon Temptation" data-price="65000">Maple Bacon Temptation - Rp 65.000</option>
+                        <option value="Tropical Mango Coconut" data-price="55000">Tropical Mango Coconut - Rp 55.000</option>
+                        <option value="Chocolate Chili Surprise" data-price="50000">Chocolate Chili Surprise - Rp 50.000</option>
+                        <option value="Matcha Red Bean Harmony" data-price="75000">Matcha Red Bean Harmony - Rp 75.000</option>
+                        <option value="Blueberry Basil Fusion" data-price="60000">Blueberry Basil Fusion - Rp 60.000</option>
+                        <option value="Saffron Almond Indulgence" data-price="59000">Saffron Almond Indulgence - Rp 59.000</option>
+                        <option value="Honey Chamomie Serenity" data-price="70000">Honey Chamomie Serenity - Rp 70.000</option>
+                        <option value="Raspberry Rosewater Rhapsody" data-price="60000">Raspberry Rosewater Rhapsody - Rp 60.000</option>
+                        <option value="Ginger Pearl Spice" data-price="55000">Ginger Pearl Spice - Rp 55.000</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a cupcake type.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" min="1" placeholder="Enter quantity" required>
+                    <div class="invalid-feedback">
+                        Please enter the quantity of cupcakes you want to order.
+                    </div>
+                </div>
+                <div id="cupcakeQuantities">
+                </div>
+                <button id="addCupcake" class="btn btn-outline-primary mt-3" type="button">Add More Cupcakes</button>
+                <button id="submitOrder" class="btn btn-primary mt-3" type="button">Submit Order</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var orderForm = document.getElementById('orderForm');
+            var submitButton = document.getElementById('submitOrder');
+
+            submitButton.addEventListener('click', function() {
+                if (orderForm.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else {
+                    localStorage.setItem('firstName', document.getElementById('firstName').value);
+                    localStorage.setItem('lastName', document.getElementById('lastName').value);
+                    localStorage.setItem('email', document.getElementById('email').value);
+                    localStorage.setItem('phone', document.getElementById('phone').value);
+                    localStorage.setItem('address', document.getElementById('address').value);
+                    localStorage.setItem('city', document.getElementById('city').value);
+                    localStorage.setItem('id', document.getElementById('id').value);
+
+                    window.location.href = 'hasilorder.html'; 
+                }
+
+                orderForm.classList.add('was-validated');
+            });
+
+            var addCupcakeButton = document.getElementById('addCupcake');
+            var cupcakeQuantities = document.getElementById('cupcakeQuantities');
+            var cupcakeCounter = 1;
+
+            addCupcakeButton.addEventListener('click', function() {
+                var cupcakeType = document.getElementById('cupcakeType').value;
+                var quantity = document.getElementById('quantity').value;
+
+                if (cupcakeType !== "" && quantity > 0) {
+                    var cupcakeDiv = document.createElement('div');
+                    cupcakeDiv.classList.add('mb-2');
+                    cupcakeDiv.innerHTML = `
+                        <strong>Cupcake ${cupcakeCounter}:</strong> ${quantity} x ${cupcakeType}
+                    `;
+                    cupcakeQuantities.appendChild(cupcakeDiv);
+
+                    document.getElementById('cupcakeType').value = "";
+                    document.getElementById('quantity').value = "";
+                    document.getElementById('cupcakeType').classList.remove('is-invalid');
+                    document.getElementById('quantity').classList.remove('is-invalid');
+
+                    cupcakeCounter++;
+                } else {
+                    if (cupcakeType === "") {
+                        document.getElementById('cupcakeType').classList.add('is-invalid');
+                    } else {
+                        document.getElementById('cupcakeType').classList.remove('is-invalid');
+                    }
+                    if (quantity <= 0) {
+                        document.getElementById('quantity').classList.add('is-invalid');
+                    } else {
+                        document.getElementById('quantity').classList.remove('is-invalid');
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="order.js"></script>
+</body>
+</html>

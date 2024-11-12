@@ -1,0 +1,32 @@
+.Order {
+    padding: 50px 0;
+}
+
+.Order .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.Order h2 {
+    color: #000;
+}
+
+.Order form {
+    margin-top: 30px;
+}
+
+.invalid-feedback {
+    color: #211f03;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #211f03;
+    padding-right: calc(1.5em + .75rem);
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+}
